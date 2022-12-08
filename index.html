@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array of objects</title>
+    <style>
+        pre{
+            font-size: 17px;
+            font-family: cursive;
+            display: inline-block;
+            border: 2px solid slateblue;
+            margin-left: 30px;
+            padding-right: 25px;
+            padding-top: 20px;
+        }
+        h2{
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="color: blue; text-decoration: underline;font-family: Georgia, 'Times New Roman', Times, serif;">Array of Object</h1>
+   <h2> Question 1 : We are interested in retrieving only the name of the students and all the names should be in caps. ['JOHN', 'BABA', 'YAGA', 'WICK']
+   </h2> 
+   <pre>
+    <span style="text-decoration: underline;">Method-1</span>
+
+    let names = [];
+    studentRecords.forEach(element =>{
+        element=element.name;
+        names.push(element.toUpperCase());
+    }) 
+    console.log(names);
+   </pre>
+   <br>
+   <pre>
+    <span style="text-decoration: underline;">Method-2</span>
+
+    namesCap = studentRecords.map( studentName => studentName.name.toUpperCase());
+    console.log(namesCap);
+   </pre>
+   <h2>Question 2: Suppose we have the same dataset as above but this time we want to get the details of students who scored more than 50 marks.
+    [{name: 'John', id: 123, marks : 98 },{name: 'Wick', id: 115, marks : 75 }]
+    </h2>
+    <pre>
+    let detailsMgt50=studentRecords.filter(studentMarks=>studentMarks.marks>50)
+    console.log(detailsMgt50);
+    </pre>
+    <h2>Question 3: Retrieve the details of students who scored more than 50 marks and have id greater than 120.</h2>
+    <pre>
+    let details=studentRecords.filter(student => student.marks>50 && student.id>120)
+    console.log(details);
+    </pre>
+    <h2>Question 4: Consider the same scenario we have discussed above, but this time we would like to know the sum total of the marks of the students.</h2>
+    <pre>
+    let sum=studentRecords.reduce(((a,b)=>a+b.marks),0)
+    console.log(sum);
+    </pre>
+    <h2>Question 5: This time we want to get only the names of the students who scored more than 50 marks from the same dataset used above.</h2>
+    <pre>
+    let detailsMgt50_name=studentRecords.filter(studentMarks=>studentMarks.marks>50).map(studentName=>studentName.name)
+    console.log(detailsMgt50_name);
+    </pre>
+    <h2> Question 6: This time we are required to print the sum of marks of the students with id > 120.</h2>
+    <pre>
+    let q6=studentRecords.filter(studentId=>studentId.id>120).reduce(((a,b)=>a+b.marks),0)
+    console.log(q6);
+    </pre>
+    <h2>Question 7: This time we are required to print the total marks of the students with marks greater than 50 after a grace of 15 marks has been added to those students who scored less than 50.</h2>
+    <pre>
+        let q7=studentRecords.map(function(studentMarks){
+            if(studentMarks.marks< 50)
+            studentMarks.marks +=15
+            return studentMarks;
+        }).filter(studentMarks=>studentMarks.marks>50).reduce((a,b)=>a+b.marks,0);
+        console.log(q7);
+    </pre>
+    <h2>Question 8: Create 6 objects , each object will have name, class, roll no as properties. Store these objects in an array of objects. </h2>
+    <pre>
+        const myObj={
+            one:{name:'one',classname:'class-one',roll:1},
+            two:{name:'two',classname:'class-two',roll:2},
+            three:{name:'three',classname:'class-three',roll:3},
+            four:{name:'four',classname:'class-four',roll:4},
+            five:{name:'five',classname:'class-five',roll:5},
+            six:{name:'six',classname:'class-six',roll:6},
+        }
+         
+        let arrObj=[];
+        for(let i in myObj){
+            arrObj.push(myObj[i])
+        }
+        console.log(arrObj);
+    </pre>
+</body>
+<script src="main.js"></script>
+</html>
